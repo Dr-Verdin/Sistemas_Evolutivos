@@ -14,5 +14,5 @@ Irei mostrar os projetos desenvolvidos para o estudo de algoritmos geneticos a s
 
 ### Projeto 1: Primeiros passos em sistemas evolutivos
 
-Este projeto estabelece as fundações de um sistema evolutivo. A população inicial é criada, e a aptidão dos indivíduos é avaliada pela função "". Novas gerações são geradas por meio de um processo de elitismo (no qual o melhor indivíduo passa seus genes para toda a população, acompanhado de uma taxa de mutação). O objetivo principal é identificar o máximo global da função.
+Este projeto estabelece as fundações de um sistema evolutivo. A população inicial é criada, e a aptidão dos indivíduos é avaliada pela função -(x/10) * (x/10) + 2x + 15. Novas gerações são geradas por meio de um processo de elitismo (no qual o melhor indivíduo passa seus genes para toda a população, acompanhado de uma taxa de mutação). O objetivo principal é identificar o máximo global da função.
 
