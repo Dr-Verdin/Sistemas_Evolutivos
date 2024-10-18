@@ -29,6 +29,42 @@ struct INDIVIDUAL {
 int gen = 1; // Contador da geração atual
 INDIVIDUAL individuo[POP_SIZE]; // Array que armazena os indíviduos
 
+// Indíce das funções
+void display();
+void initGL();
+void initPop(int tamPop, INDIVIDUAL individuo[]);
+void evaluePop();
+INDIVIDUAL theBest();
+void mutate(INDIVIDUAL &ind);
+void nextGen();
+void runAlgorithm();
+void keyboard(unsigned char key, int x, int y);
+
+// Função principal
+int main(int argc, char **argv) { 
+    initPop(POP_SIZE, individuo); // inicia a população
+
+    // Inicia o OpenGL e o GLUT
+    glutInit(&argc, argv);
+    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
+    glutInitWindowSize(500, 500);
+    glutInitWindowPosition(100, 100);
+    glutCreateWindow("Projeto 1");
+
+    initGL();  // Configura o OpenGL
+
+    // Registra as funções de callback
+    glutDisplayFunc(display); // Função de exibição
+    glutKeyboardFunc(keyboard); // Função para lidar com o teclado
+
+    // Inicia o loop de eventos do GLUT
+    glutMainLoop();
+
+    return 0;  // Retorna 0 ao terminar o programa
+}
+
+
+
 // Função de desenho
 void display() { 
     glClear(GL_COLOR_BUFFER_BIT);  // Limpa a tela
@@ -63,7 +99,7 @@ void initGL() {
     glClearColor(0.0, 0.0, 0.0, 1.0);  // Define a cor de fundo da tela 
     glMatrixMode(GL_PROJECTION);  // Seleciona a matriz de projeção
     glLoadIdentity();  // Reseta a matriz
-    gluOrtho2D(MIN, MAX, 0, 30); // Define a projeção 2D com o domínio da função
+    gluOrtho2D(MIN + (- 2), MAX + 2, 0, 25); // Define a projeção 2D com o domínio da função
 }
 
 // FUnção para iniciar a população
@@ -124,7 +160,7 @@ void nextGen(){
 }
 
 // Função para executar o algoritmo
-void runAlgorithm() { // OK
+void runAlgorithm() {
     evaluePop();  // Avalia a população atual
     display();       // Atualiza o gráfico
     glutPostRedisplay();  // Solicita uma atualização da tela
@@ -141,27 +177,4 @@ void keyboard(unsigned char key, int x, int y) {
             printf("Numero maximo de gerações atingido.\n");
         }
     }
-}
-
-// Função principal
-int main(int argc, char **argv) { 
-    initPop(POP_SIZE, individuo); // inicia a população
-
-    // Inicia o OpenGL e o GLUT
-    glutInit(&argc, argv);
-    glutInitDisplayMode(GLUT_SINGLE | GLUT_RGB);
-    glutInitWindowSize(500, 500);
-    glutInitWindowPosition(100, 100);
-    glutCreateWindow("Projeto 1");
-
-    initGL();  // Configura o OpenGL
-
-    // Registra as funções de callback
-    glutDisplayFunc(display); // Função de exibição
-    glutKeyboardFunc(keyboard); // Função para lidar com o teclado
-
-    // Inicia o loop de eventos do GLUT
-    glutMainLoop();
-
-    return 0;  // Retorna 0 ao terminar o programa
 }
