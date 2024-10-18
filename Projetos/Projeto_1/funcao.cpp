@@ -34,7 +34,8 @@ void display() {
     glClear(GL_COLOR_BUFFER_BIT);  // Limpa a tela
 
     // Desenha a curva da função de aptidão
-    glColor3f(0.0, 0.0, 0.0); // Define a cor da linha 
+    glLineWidth(2.0);
+    glColor3f(1.0, 1.0, 1.0); // Define a cor da linha 
     glBegin(GL_LINE_STRIP); // Inicia a definição de uma linha contínua
     for (float x = MIN; x <= MAX; x += 0.1) {
         // Calcula o valor de y com base na função de aptidão
@@ -44,8 +45,8 @@ void display() {
     glEnd(); // Finaliza a definição da linha
 
     // Plota os pontos da população atual sobre a curva
-    glPointSize(5.0); // Define o tamanho dos pontos
-    glColor3f(0.5, 0.0, 0.5); // Define a cor dos pontos como rosa
+    glPointSize(8.0); // Define o tamanho dos pontos
+    glColor3f(1.0, 0.0, 0.5); // Define a cor dos pontos como rosa
     glBegin(GL_POINTS); // Inicia a definição de pontos individuais
     for (int i = 0; i <= POP_SIZE; i++) {
         // Calcula y para garantir que o ponto esteja na curva
@@ -59,7 +60,7 @@ void display() {
 
 // Função para iniciar o OpenGL
 void initGL() { 
-    glClearColor(1.0, 1.0, 1.0, 1.0);  // Define a cor de fundo da tela como preto
+    glClearColor(0.0, 0.0, 0.0, 1.0);  // Define a cor de fundo da tela 
     glMatrixMode(GL_PROJECTION);  // Seleciona a matriz de projeção
     glLoadIdentity();  // Reseta a matriz
     gluOrtho2D(MIN, MAX, 0, 30); // Define a projeção 2D com o domínio da função
